@@ -1,6 +1,7 @@
 import { signIn, getSession } from 'next-auth/react';
 import { useState } from 'react';
 import { useRouter } from 'next/router';
+import Link from 'next/link'; // Import Link for navigation
 
 export default function SignInPage() {
   const [email, setEmail] = useState('');
@@ -31,8 +32,8 @@ export default function SignInPage() {
     }
 
     setIsSubmitting(false);
-  }; 
-   
+  };
+
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-r from-blue-500 to-blue-700">
       <div className="bg-white shadow-xl rounded-lg p-8 w-full max-w-sm md:max-w-md">
@@ -65,7 +66,18 @@ export default function SignInPage() {
             {isSubmitting ? 'Signing In...' : 'Sign In'}
           </button>
         </form>
+
+        {/* Add links to Sign Up and Back */}
+        <div className="flex justify-between mt-4">
+          <Link href="/auth/signup" className="text-blue-500 hover:underline">
+            Don't have an account? Sign Up
+          </Link>
+          <Link href="/" className="text-blue-500 hover:underline">
+            Back
+          </Link>
+        </div>
       </div>
     </div>
   );
-} 
+}
+ 

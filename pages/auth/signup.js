@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useRouter } from 'next/router';
+import Link from 'next/link'; // Import Link for navigation
 
 export default function SignUpPage() {
   const [email, setEmail] = useState('');
@@ -22,7 +23,7 @@ export default function SignUpPage() {
       alert(await res.text());
     }
   };
- 
+
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-100">
       <div className="bg-white p-8 rounded-lg shadow-lg w-full max-w-md">
@@ -59,7 +60,18 @@ export default function SignUpPage() {
             Sign Up
           </button>
         </form>
+
+        {/* Add links to Sign In and Back */}
+        <div className="flex justify-between mt-4">
+          <Link href="/auth/signin" className="text-blue-500 hover:underline">
+            Already have an account? Sign In
+          </Link>
+          <Link href="/" className="text-blue-500 hover:underline">
+            Back
+          </Link>
+        </div>
       </div>
     </div>
   );
-}  
+}
+ 
